@@ -28,7 +28,7 @@ public class Calculator {
             }
             price = scanner.nextFloat();
 
-            productList = productList + productName + " цена: " + price + "\n";
+            productList = productList + "Товар: " + productName + " цена: " + price + "\n";
             sum = sum + price;
             System.out.println("Товар: " + productName + " успешно добавлен");
 
