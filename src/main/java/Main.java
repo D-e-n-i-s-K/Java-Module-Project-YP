@@ -4,21 +4,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
+
         Scanner scanner = new Scanner(System.in);
         int personCount;
 
-        while (true){
-            System.out.println("На скольких человек необходимо разделить счёт");
-            personCount = scanner.nextInt();
-            // System.out.println("введено количество " + personCount);
-            if (personCount > 1){
-                break;
-            }else{
-                System.out.println("Ошибка, ввести корректное значение");
-            }
+        System.out.println("На скольких человек необходимо разделить счёт");
+        while (!scanner.hasNextInt()) {
+            System.out.println("ой, Вы ввели не число, введите число");
+            scanner.next();
         }
+        personCount = scanner.nextInt();
 
         Calculator  calculator = new Calculator();
         calculator.addProduct();
@@ -33,12 +28,13 @@ public class Main {
     static String sumResult(double personSum) {
 
         String ending = "";
+        int wholePart = (int) personSum;
 
-        if (5 <= personSum%100 && personSum%100 <= 20){
+        if (5 <=  wholePart &&  wholePart <= 20){
             ending =  "рублей";
-        } else if (personSum%10 == 1) {
+        } else if ( wholePart == 1) {
             ending =  "рубль";
-        } else if (personSum%10 == 2 || personSum%10 == 3 || personSum%10 == 4) {
+        } else if ( wholePart == 2 ||  wholePart == 3 || wholePart == 4) {
             ending =  "рубля";
         }
         else {

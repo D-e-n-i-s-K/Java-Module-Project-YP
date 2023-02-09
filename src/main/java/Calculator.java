@@ -11,25 +11,27 @@ public class Calculator {
 
     void addProduct() {
 
-        boolean proceed = true;
+        while (true) {
 
-        while (proceed) {
-            System.out.println("Введите название товара, для завершения ввода товаров введите \"Завершить\"");
+            System.out.println("Введите название товара или \"Завершить\" для прекрашения ввода товаров");
             productName = scanner.next();
 
+            if (productName.equalsIgnoreCase("завершить")) {
+                break;
+            }
+
             System.out.println("Введите стоимость товара");
+
+            while (!scanner.hasNextFloat()) {
+                System.out.println("ой, Вы ввели не число, введите число");
+                scanner.next();
+            }
             price = scanner.nextFloat();
 
             productList = productList + productName + " цена: " + price + "\n";
             sum = sum + price;
             System.out.println("Товар: " + productName + " успешно добавлен");
 
-            System.out.println("Ввести еще товар?");
-            String answer = scanner.next();
-
-            if (answer.toLowerCase().equals("завершить")) {
-                proceed = false;
-            }
         }
 
 
